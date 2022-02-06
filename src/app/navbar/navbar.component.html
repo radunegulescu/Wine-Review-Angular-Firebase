@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/home">Wine Review</a>
+    <button class="nav-item nav-link" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <span *ngIf="!(afAuth.user | async); else loggedIn">
+                <a class="nav-item nav-link" routerLink="/login">
+                    <span>Login</span>
+                </a>
+                <a class="nav-item nav-link" routerLink="/signup">
+                    <span>Sign up</span>
+                </a>
+            </span>
+            <ng-template #loggedIn>
+                <a class="nav-item nav-link" href="#" (click)="logout()">
+                    <span>Log out</span>
+                </a>
+                <span *ngIf="!(afAuth.user | async)?.emailVerified">
+                    <a class="nav-item nav-link" routerLink="/verify-email">
+                        <span>Resend email verification</span>
+                    </a>
+                </span>
+                <span *ngIf="(router.url != '/dashboard')">
+                    <a class="nav-item nav-link" routerLink="/dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </span>
+                <span *ngIf="(user | async)?.accountType == 'admin' && (router.url != '/admin')">
+                    <a class="nav-item nav-link" routerLink="/admin">
+                        <span>Admin Dashboard</span>
+                    </a>
+                </span>
+                <span
+                    *ngIf="((user | async)?.accountType == 'admin' || (user | async)?.accountType == 'producer') && (router.url != '/create-wine')">
+                    <a class="nav-item nav-link" routerLink="/create-wine">
+                        <span>Add wine</span>
+                    </a>
+                </span>
+                <span *ngIf="(router.url != '/list-wines')">
+                    <a class="nav-item nav-link" routerLink="/list-wines">
+                        <span>Wines List</span>
+                    </a>
+                </span>
+            </ng-template>
+            <a class="nav-item nav-link" routerLink="/forgot-password">
+                <span>Forgot password</span>
+            </a>
+            <span *ngIf="(router.url != '/home')">
+                <a class="nav-item nav-link" routerLink="/home">
+                    <span>Home</span>
+                </a>
+            </span>
+        </div>
+    </div>
+</nav>

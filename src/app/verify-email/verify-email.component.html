@@ -1,0 +1,22 @@
+Verify Email
+<br>
+<br>
+<button routerLink="/home">
+    <span>Home</span>
+</button>
+
+<section>
+    <p>A verification email will be sent to <span>{{ email }}</span>.</p>
+
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+    </div>
+
+    <button [disabled]="mailSent" (click)="resendVerificationEmail()">Resend verification email</button>
+    <div *ngIf="mailSent">
+        <p>An email has been sent!</p>
+        <button routerLink="/home">
+            <span>Return Home</span>
+        </button>
+    </div>
+</section>

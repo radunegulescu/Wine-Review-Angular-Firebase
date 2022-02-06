@@ -1,0 +1,21 @@
+<table class="table table-hover">
+    <thead>
+        <th>Account Type</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of (users | async)">
+            <td>{{user.displayName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.accountType}}</td>
+            <div *ngIf="user?.accountType == 'endUser'">
+                <button (click)="makeProducer(user.email_lower)">Make Producer</button>
+            </div>
+            <div *ngIf="user?.accountType == 'producer'">
+                <button (click)="makeEndUser(user.email_lower)">Make End User</button>
+            </div>
+        </tr>
+    </tbody>
+</table>

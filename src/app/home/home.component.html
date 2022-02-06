@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<br>
+
+
+<section *ngIf="(afAuth.user | async)">
+    <span>User is logged in</span>
+</section>
+<section *ngIf="!(afAuth.user | async)">
+    <span>User is not logged in</span>
+</section>

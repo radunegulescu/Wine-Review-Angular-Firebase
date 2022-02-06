@@ -1,0 +1,18 @@
+<button routerLink="/dashboard">
+    <span>Back to dashboard</span>
+</button>
+<section class="form-card">
+    <form [formGroup]="editDashboardForm" (ngSubmit)="editDashboard()">
+        <p>
+            <label>Full Name</label>
+            <input autocomplete="off" formControlName="displayName" type="text" placeholder="Display Name"
+                value="{{ (user | async)?.displayName }}">
+        </p>
+        <p>
+            <label>Birthdate</label>
+            <input type="date" formControlName="birthdate" placeholder="Birthdate"
+                value="{{ (user | async)?.birthdate }}">
+        </p>
+        <button>Save</button>
+    </form>
+</section>

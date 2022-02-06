@@ -1,0 +1,27 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<app-navbar></app-navbar>
+<div class="container" style="padding-top: 10px;">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let wine of (wines | async)">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <img src="{{wine.imageUrl}}" width="70%" height="70%">
+                    <p class="product-name">{{wine.name}}</p>
+                    <p class="m-t-xs">Type: {{wine.type}}</p>
+                    <p class="m-t-xs">Fruit: {{wine.fruit}}/5</p>
+                    <p class="m-t-xs">Body: {{wine.body}}/5</p>
+                    <p class="m-t-xs">Acidity: {{wine.acidity}}/5</p>
+                    <p class="m-t-xs">Tannin: {{wine.tannin}}/5</p>
+                    <button class="btn btn-danger" *ngIf="(user | async)?.email_lower == wine.producerEmail"
+                        (click)="delete(wine)">
+                        <span>Delete</span>
+                    </button>
+                    <button class="btn btn-primary" *ngIf="(user | async)?.accountType == 'endUser'"
+                        routerLink="/rate/{{wine.id}}">
+                        <span>Rate Wine</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

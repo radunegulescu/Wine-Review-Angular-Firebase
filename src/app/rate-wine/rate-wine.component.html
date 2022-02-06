@@ -1,0 +1,28 @@
+<button routerLink="/list-wines">
+    <span>Back to wines</span>
+</button>
+<section class="form-card">
+    <form [formGroup]="editRatingForm" (ngSubmit)="saveRating()">
+        <p>
+            <label>Acidity</label>
+            <input formControlName="acidity" type="number" max="5" min="0" placeholder="Acidity"
+                value="{{ oldRating?.acidity }}">
+        </p>
+        <p>
+            <label>Body</label>
+            <input formControlName="body" type="number" max="5" min="0" placeholder="Body"
+                value="{{ oldRating?.body }}">
+        </p>
+        <p>
+            <label>Fruit</label>
+            <input formControlName="fruit" type="number" max="5" min="0" placeholder="Fruit"
+                value="{{ oldRating?.fruit }}">
+        </p>
+        <p>
+            <label>Tannin</label>
+            <input formControlName="tannin" type="number" max="5" min="0" placeholder="Tannin"
+                value="{{ oldRating?.tannin }}">
+        </p>
+        <button>Save</button>
+    </form>
+</section>

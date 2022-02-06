@@ -1,0 +1,24 @@
+<p>edit-profile-picture works!</p>
+<button routerLink="/dashboard">
+    <span>Back to dashboard</span>
+</button>
+<section class="form-card">
+    <form [formGroup]="editProfiePictureForm" (ngSubmit)="editProfilePicture(editProfiePictureForm.value)">
+        <div class="text-left">
+            <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+        </div>
+        <div class="form-group">
+            <label>Select file to upload</label>
+            <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="imageUrl"
+                (change)="showPreview($event)">
+            <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">This field is
+                required.
+            </div>
+        </div>
+        <button>Save</button>
+    </form>
+</section>
+<div>
+    <p>Old photo:</p>
+    <img src="{{ (user | async)?.imageUrl }}" width="20%" height="20%">
+</div>

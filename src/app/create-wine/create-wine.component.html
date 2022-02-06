@@ -1,0 +1,41 @@
+Add Wine
+<br>
+<br>
+<button routerLink="/home">
+    <span>Home</span>
+</button>
+
+<section class="form-card">
+    <form [formGroup]="addWineForm" (ngSubmit)="addWine(addWineForm.value)">
+        <p>
+            <label>Wine Name</label>
+            <input formControlName="name" type="text" placeholder="Name">
+        </p>
+        <p>Type</p>
+        <div>
+            <input type="radio" id="red" formControlName="type" value="red" checked>
+            <label for="red">Red</label>
+        </div>
+        <div>
+            <input type="radio" id="white" formControlName="type" value="white">
+            <label for="white">White</label>
+        </div>
+        <div>
+            <input type="radio" id="rose" formControlName="type" value="rose">
+            <label for="rose">Rose</label>
+        </div>
+        <p>Image</p>
+        <div class="text-left">
+            <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+        </div>
+        <div class="form-group">
+            <label>Select file to upload</label>
+            <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="imageUrl"
+                (change)="showPreview($event)">
+            <div class="text-danger" *ngIf="formControls.imageUrl.errors?.required">This field is
+                required.
+            </div>
+        </div>
+        <button>Add</button>
+    </form>
+</section>

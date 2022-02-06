@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<br>
+
+Dashboard
+
+<br>
+<br>
+
+<div *ngIf="(user | async)">
+    <p>Account Type: {{ (user | async)?.accountType }}</p>
+    <p>Display Name: {{ (user | async)?.displayName }}</p>
+    <p>Birthdate: {{ (user | async)?.birthdate }}</p>
+    <p>Email: {{ (user | async)?.email }}</p>
+    <p>Email Verification Status: {{ (afAuth.user | async)?.emailVerified }}</p>
+    <div>
+        <img src="{{ (user | async)?.imageUrl }}" width="20%" height="20%">
+    </div>
+    <button class="btn btn-primary" routerLink="/edit-dashboard">
+        <span>Edit dashboard</span>
+    </button>
+    <button class="btn btn-primary" routerLink="/edit-profile-picture">
+        <span>Edit Profile Picture</span>
+    </button>
+</div>

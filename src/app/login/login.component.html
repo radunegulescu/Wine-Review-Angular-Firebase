@@ -1,0 +1,36 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<button routerLink="/home">
+    <span>Home</span>
+</button>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="fadeIn first">
+            LOGIN
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+            <p>
+                <input id="login" class="fadeIn second" autocomplete="on" formControlName="email" type="email"
+                    placeholder="Email">
+            <p>
+                <input id="password" class="fadeIn third" autocomplete="off" formControlName="password" type="password"
+                    placeholder="Password">
+            </p>
+            <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+                <span>{{ firebaseErrorMessage }}</span>
+            </div>
+
+            <button>Login</button>
+        </form>
+        <div id="formFooter">
+            <a routerLink="/forgot-password">
+                <span>Forgot password</span>
+            </a>
+        </div>
+    </div>
+</div>
